@@ -1,6 +1,5 @@
 import { Link,navigate } from '@reach/router'
 import React, { useState } from 'react'
-import Form from '../component/Form'
 import axios from 'axios';
 import RegForm from '../component/RegForm';
 

@@ -3,13 +3,15 @@ import Create from '../component/Create';
 import axios from 'axios';
 import { Link,navigate } from '@reach/router';
 
-const AddPlayer = () => {
+const Adding = () => {
     const [competitions,setCompetitions]=useState("")
     const [errors, setErrors] = useState([]); 
+    var data = JSON.parse(sessionStorage.getItem('user'))
+    
 
-    const handle=product1=>{
-        axios.post('http://localhost:8000/api/competitions/new', product1)
-               .then(res=> {setCompetitions([...competitions, res.data])})
+    const handle=(dailyIncome , debts , expenses , food , residence , transport , clothes , health , entertainment , maintenance , other )=>{
+        axios.post('http://localhost:8000/api/Budget/new/'+data.user._id ,{'expenses.food': food   , 'expenses.residence' : residence , 'expenses.transport' : transport , 'expenses.clothes' : clothes , 'expenses.health' : health , 'expenses.entertainment' : entertainment ,  'expenses.maintenance' : maintenance , 'expenses.other' : other , 'dailyIncome':dailyIncome , 'debts':debts} )
+               .then(res=> console.log(res))
                .catch(err=>{console.log(err)
                 const errorResponse = err.response.data.errors; // Get the errors from err.response.data
                 const errorArr = []; // Define a temp error array to push the messages in
@@ -18,14 +20,13 @@ const AddPlayer = () => {
                 }
                 // Set Errors
                 setErrors(errorArr);
-            })
+            })           
        }
   return (
     <div>
-
 <button style={{backgroundColor:"blue"}}><Link to="/">back to home </Link></button>
-         
-          <Create onSubmitProp={handle} initialName="" initialCoun1=" " initialCoun2=" " initialCoun3=" " >
+
+          <Create onSubmitProp={handle}  initialDailyIncome=" " initialExpenses=" " initialDepts=" "  initialSelect = " ">
            {errors.map((err, index) => <p style={{color:"red"}} key={index}>{err}</p>)}
            </Create>
 
@@ -35,4 +36,4 @@ const AddPlayer = () => {
   )
 }
 
-export default AddPlayer
+export default Adding

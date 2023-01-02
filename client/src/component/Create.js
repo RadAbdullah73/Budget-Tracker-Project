@@ -4,48 +4,57 @@ import axios from 'axios';
 import { Link } from '@reach/router';
 
 const Create = (props) => {
-    const [question,setQust]=useState(props.initialName)
-    const [coun1,setCoun1]=useState(props.initialCoun1)
-    const [coun2,setCoun2]=useState(props.initialCoun2)
-    const [coun3,setCoun3]=useState(props.initialCoun3)
-    
+    const [dailyIncome,setDailyIncome]=useState(props.initialDailyIncome)
+    const [expenses,setExpenses]=useState(props.initialExpenses)
+    const [debts,setDebts]=useState(props.initialDepts)
+    const [select , setSelect] = useState(props.initialSelect)
+    const [food,setFood]=useState(0)
+    const [residence,setResidence]=useState(0)
+    const [transport,setTransport]=useState(0)
+    const [clothes,setClothes]=useState(0)
+    const [health,setHealth]=useState(0)
+    const [entertainment,setEntertainment]=useState(0)
+    const [maintenance,setMaintenance]=useState(0)
+    const [other,setOther]=useState(0)
+
+
+    var data = JSON.parse(sessionStorage.getItem('user'))
+
+
     const handleSubmet=(e)=>{
         e.preventDefault();
-        // axios.post('http://localhost:8000/api/Products/new', {
-        //     Title,
-        //     Price,
-        //     Desc
-        // })
-        //     .then(res=>console.log(res))
-        //     .catch(err=>console.log(err))
-        props.onSubmitProp({question,"coun1.name":coun1,"coun2.name":coun2,"coun3.name":coun3,"coun1.votes":0,"coun2.votes":0,"votes":0,"coun3.votes":0,"votes":0 });
+        props.onSubmitProp(dailyIncome , debts , expenses , food , residence , transport , clothes , health , entertainment , maintenance , other );
+
     }
+    
   return (
     <div>
-      <h1>Product Manager</h1>
+      <h1>Add your Finance for Today </h1>
       <form onSubmit={handleSubmet}>
         <div>
-            <label>question</label>
-            <input type="text" value={question} onChange={(e)=>setQust(e.target.value)}></input>
-            {props.children}
+            <h3>Daily Income:</h3>
+            <input type="text" value={dailyIncome} onChange={(e)=>setDailyIncome(e.target.value)}></input>
         </div>
         <div>
-            <label>Country 1</label>
-            <input type="text" value={coun1} onChange={(e)=>setCoun1(e.target.value)}></input>
+          <br></br>
+            <h3>Expenses</h3>
+            <p>Food : <input type="text" value={food} onChange={(e)=>setFood(e.target.value)}></input></p>
+            <p>Residence : <input type="text" value={residence} onChange={(e)=>setResidence(e.target.value)}></input></p>
+            <p>Transport : <input type="text" value={transport} onChange={(e)=>setTransport(e.target.value)}></input></p>
+            <p>Clothes : <input type="text" value={clothes} onChange={(e)=>setClothes(e.target.value)}></input></p>
+            <p>Health : <input type="text" value={health} onChange={(e)=>setHealth(e.target.value)}></input></p>
+            <p> Entertainment : <input type="text" value={entertainment} onChange={(e)=>setEntertainment(e.target.value)}></input></p>
+            <p> Maintenance :<input type="text" value={maintenance} onChange={(e)=>setMaintenance(e.target.value)}></input></p>
+            <p> Others : <input type="text" value={other} onChange={(e)=>setOther(e.target.value)}></input></p>
         </div>
         <div>
-            <label>Country 2</label>
-            <input type="text" value={coun2} onChange={(e)=>setCoun2(e.target.value)}></input>
-        </div>
-        <div>
-            <label>Country 3</label>
-            <input type="text" value={coun3} onChange={(e)=>setCoun3(e.target.value)}></input>
-        </div>
-      
+            <h3>Debts </h3>
+            <input type="text" value={debts} onChange={(e)=>setDebts(e.target.value)}></input>
+        </div>   
         <button style={{backgroundColor:"blue"}}>Add </button>
        
       </form>
-    
+      {props.children}
     </div>
   )
 }

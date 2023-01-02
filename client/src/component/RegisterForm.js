@@ -58,11 +58,11 @@ const styles = {
                     <InputLabel >Password</InputLabel>
                     <OutlinedInput onChange={(e)=> setPassword(e.target.value)} type="password" value={password}/>
                 </FormControl>
-                <FormControl variant="outlined" style={styles.input}>
+                <FormControl variant="outlined" style={styles.input} >
                     <InputLabel >CPassword</InputLabel>
                     <OutlinedInput onChange={(e)=> setConfirmPassword(e.target.value)} type="password" value={confirmPassword}/>
                 </FormControl>
-                <Button type="submit" variant="contained" color="primary" disabled={isLoading}>
+                <Button type="submit" variant="contained" color="primary" disabled={isLoading}  style={{marginTop: '70px' }}>
                     Login
                 </Button>
                 {error && <p>{error}</p>}
