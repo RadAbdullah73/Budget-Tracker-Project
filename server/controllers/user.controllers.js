@@ -1,5 +1,7 @@
 // const { UserSchema } = require('../models/userSchema.model');
-const [Budget, UserSchema] = require("../models/user.model");
+const Model = require("../models/user.model");
+const UserSchema=Model.User
+const Budget=Model.Budget
 var bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 module.exports.createUser = (request, response) => {
@@ -102,9 +104,17 @@ module.exports.findOneSingleAuthor = (req, res) => {
 };
 
 module.exports.createNewAuthor = (req, res) => {
-    Budget.create(req.body)
-        .then(newlyCreatedAuthor => res.json({ newlyCreatedAuthor }))
+    UserSchema.findOne({ _id: req.params.id })
+    .then(oneSingleAuthor => {var user1=oneSingleAuthor;
+        Budget.create(req.body)
+        .then(newlyCreatedAuthor => {res.json({ newlyCreatedAuthor })
+        Budget.findOneAndUpdate({ _id:newlyCreatedAuthor._id}, {user:user1}, { new: true, runValidators: true })
+        .then(updatedAuthor => res.json({ updatedAuthor }))
+    })
         .catch(err => res.status(400).json(err))
+    })
+   
+       
 };
 
 module.exports.updateExistingAuthor = (req, res) => {
@@ -119,7 +129,13 @@ module.exports.deleteAnExistingAuthor = (req, res) => {
         .catch(err => res.json({ message: "Something went wrong", error: err }));
 };
 module.exports.findAccordingMonth = (req, res) => {
-    Budget.find({ set1: { $in: req.params.month } })
-        .then(oneSingleAuthor => res.json(oneSingleAuthor))
-        .catch(err => res.json({ message: "Something went wrong", error: err }));
-};
+    const {month}=req.params
+    
+     
+        Budget.find({ set1: { $regex: month }})
+        .then(one => res.json(one))
+        .catch(err => res.json({ message: "Something went wrong", error: err }))};
+     ;                                                                
+   
+  
+
