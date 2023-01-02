@@ -42,12 +42,12 @@ const UserSchema = new mongoose.Schema({
   }, {timestamps: true});
 
 const BudgetSchema = new mongoose.Schema({
-	expenses:{food:Number,residence:Number,transport:Number,clothes:Number,health:Number,entertainment:Number,other:Number,maintenance: Number},
+	expenses:{food:Number,residence:Number,transport:Number,clothes:Number,health:Number,entertainment:Number,other:Number,maintenance: Number , 	debts:Number},
 	dailyIncome:Number,
 	monthlyIncome:{salary:Number,investment:Number,other:Number},
-	debts:Number,
 	user:[UserSchema],
-	set1: {type:String,default:()=> formatDate()}
+	set1: {type:String,default:()=> formatDate()},
+  sum:Number ,
 	
 	
 	
