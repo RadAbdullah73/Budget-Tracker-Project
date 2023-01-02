@@ -47,7 +47,7 @@ const styles = {
                     <InputLabel >Password</InputLabel>
                     <OutlinedInput onChange={(e)=> setPassword(e.target.value)} type="password" value={password}/>
                 </FormControl>
-                <Button type="submit" variant="contained" color="primary" disabled={isLoading}>
+                <Button type="submit" variant="contained" color="primary" disabled={isLoading}  style={{marginTop: '30px' }}>
                     Login
                 </Button>
                 {error && <p>{error}</p>}

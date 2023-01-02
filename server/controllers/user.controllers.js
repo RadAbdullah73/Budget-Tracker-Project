@@ -102,6 +102,11 @@ module.exports.findOneSingleAuthor = (req, res) => {
         .then(oneSingleAuthor => res.json(oneSingleAuthor))
         .catch(err => res.json({ message: "Something went wrong", error: err }));
 };
+module.exports.findOneSingleUser = (req, res) => {
+    UserSchema.findOne({ _id: req.params.id })
+        .then(oneSingleAuthor => res.json(oneSingleAuthor))
+        .catch(err => res.json({ message: "Something went wrong", error: err }));
+};
 
 module.exports.createNewAuthor = (req, res) => {
     UserSchema.findOne({ _id: req.params.id })

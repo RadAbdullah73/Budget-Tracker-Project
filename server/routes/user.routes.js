@@ -6,6 +6,7 @@ module.exports = app => {
   app.get("/api/Budget/", UserCont.findAllAuthors);
   app.get("/api/Budget/month/:month", UserCont.findAccordingMonth);
   app.get("/api/Budget/:id", UserCont.findOneSingleAuthor);
+  app.get("/api/user/:id", UserCont.findOneSingleUser);
   app.put("/api/Budget/update/:id", UserCont.updateExistingAuthor);
   app.post("/api/Budget/new/:id", UserCont.createNewAuthor);
   app.delete("/api/Budget/delete/:id", UserCont.deleteAnExistingAuthor);
