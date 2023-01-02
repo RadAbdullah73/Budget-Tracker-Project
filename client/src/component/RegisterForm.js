@@ -8,22 +8,18 @@ import {
 } from '@material-ui/core';
 import { navigate } from '@reach/router';
 import useReg from '../hooks/useReg';
-
-
-
-
 export default function RegisterForm() {
-    
     const [firstName,setFirstName]=useState("")
     const [lastName,setLastName]=useState("")   
     const [email,setEmail]=useState("")
     const [password,setPassword]=useState("")
     const [confirmPassword,setConfirmPassword]=useState('')
+    const [salary,setSalary]=useState('')
 const {reg,isLoading,error}=useReg()
 const handleSubmit = async (e) =>{
     e.preventDefault()
     console.log(email,password)
-    await reg(firstName,lastName,email,password,confirmPassword)
+    await reg(firstName,lastName,email,password,confirmPassword,salary)
     
 }
 const styles = {
@@ -62,7 +58,13 @@ const styles = {
                     <InputLabel >CPassword</InputLabel>
                     <OutlinedInput onChange={(e)=> setConfirmPassword(e.target.value)} type="password" value={confirmPassword}/>
                 </FormControl>
-                <Button type="submit" variant="contained" color="primary" disabled={isLoading}  style={{marginTop: '70px' }}>
+
+                <FormControl variant="outlined" style={styles.input}>
+                    <InputLabel >salary</InputLabel>
+                    <OutlinedInput onChange={(e)=> setSalary(e.target.value)}  value={salary}/>
+                </FormControl>
+                <Button type="submit" variant="contained" color="primary" disabled={isLoading}>
+
                     Login
                 </Button>
                 {error && <p>{error}</p>}

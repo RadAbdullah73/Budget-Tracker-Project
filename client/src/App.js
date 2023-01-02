@@ -19,16 +19,17 @@ import Profile from './views/Profile';
 function App() {
   return (
     <div className="App" >
-      
+
       
       
       <Router>
-     
-        
+
          <RegisterForm path="/"/>
         <LoginForm path="/login"/>
         <Adding path="/add"/>
         <Profile path="/profile/:id"/>
+        <List path="/home"/>
+
 
        
 
