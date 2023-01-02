@@ -38,18 +38,19 @@ const UserSchema = new mongoose.Schema({
       required: true, 
       timestamps: true
    
-    }
+    },
+    salary:{type:Number, required: true}
   }, {timestamps: true});
 
 const BudgetSchema = new mongoose.Schema({
-	expenses:{food:Number,residence:Number,transport:Number,clothes:Number,health:Number,entertainment:Number,other:Number,maintenance: Number},
+	expenses:{food:{type:Number,default:0},residence:{type:Number,default:0},transport:{type:Number,default:0},clothes:{type:Number,default:0},health:{type:Number,default:0},entertainment:{type:Number,default:0},other:{type:Number,default:0},maintenance: {type:Number,default:0},sum:{type:Number,default:0} },
 	dailyIncome:Number,
-	monthlyIncome:{salary:Number,investment:Number,other:Number},
+	
 	debts:Number,
 	user:[UserSchema],
 	set1: {type:String,default:()=> formatDate()}
-	
-	
+	,
+	sum:Number
 	
 },{timestamps: true});
 UserSchema.virtual('confirmPassword')
@@ -63,7 +64,7 @@ UserSchema.virtual('confirmPassword')
   //   next();
   // });
 
-  UserSchema.statics.signup = async function(firstName,lastName,email,password,confirmPassword)  {
+  UserSchema.statics.signup = async function(firstName,lastName,email,password,confirmPassword,salary)  {
     const exist = await this.findOne({email})
     if (exist){
       throw Error('Email already in use')
@@ -82,7 +83,7 @@ UserSchema.virtual('confirmPassword')
     const salt = await bcrypt.genSalt(10)
     const hash= await bcrypt.hash(password,salt)
 
-    const user = await this.create({firstName,lastName,email,password:hash,confirmPassword})
+    const user = await this.create({firstName,lastName,email,password:hash,confirmPassword,salary})
     return user
   }
 // near the top is a good place to group our imports

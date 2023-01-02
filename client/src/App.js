@@ -18,7 +18,7 @@ import LoginForm from './component/LoginForm'
 function App() {
   return (
     <div className="App" >
-      <h1 style={{backgroundColor:"#dddddd"}}>countries competition</h1>
+     
       
       
       <Router>
@@ -26,9 +26,8 @@ function App() {
         
         <RegisterForm path="/"/>
             <LoginForm path="/login"/>
-        {/* <AddPlayer path="/competitions/new"/>
-        <Show path="/choose/:id"/>
-        <Result path="/result/:id"/> */}
+            <List path="/home"/>
+      
 
        
 

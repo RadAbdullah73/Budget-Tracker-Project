@@ -14,10 +14,11 @@ const [lastName,setLastName]=useState(initialName2)
 const [email,setEmail]=useState(initialemail)
 const [password,setPassword]=useState(initialpassword)
 const [confirmPassword,setConfirmPassword]=useState(initialcpassword)
+const [salary,setSalary]=useState('')
 
 const handleSubmit = e => {
     e.preventDefault();
-    props.onSubmitProps({firstName,lastName,email,password,confirmPassword});
+    props.onSubmitProps({firstName,lastName,email,password,confirmPassword,salary});
 }
 const styles = {
     paper: {
