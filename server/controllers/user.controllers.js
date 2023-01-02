@@ -81,9 +81,9 @@ module.exports.loginUser = async (req, res) => {
 }
 
 module.exports.reg = async (req, res) => {
-    const { firstName, lastName, email, password, confirmPassword } = req.body
+    const { firstName, lastName, email, password, confirmPassword ,salary} = req.body
     try {
-        const user = await UserSchema.signup(firstName, lastName, email, password, confirmPassword)
+        const user = await UserSchema.signup(firstName, lastName, email, password, confirmPassword,salary)
         res.status(200).json({ email, user })
     }
     catch (error) {
@@ -140,7 +140,7 @@ module.exports.findAccordingMonth = (req, res) => {
         Budget.find({ set1: { $regex: month }})
         .then(one => res.json(one))
         .catch(err => res.json({ message: "Something went wrong", error: err }))};
-     ;                                                                
+     ;
    
   
-
+;

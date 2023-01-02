@@ -30,7 +30,7 @@ const useLogin = () => {
             // .then(Project => response.json(Project))
             // .catch(err => response.json(err))
 
-            navigate("/players/list")
+            navigate("/home")
 
         }
     }
