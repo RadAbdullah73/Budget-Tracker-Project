@@ -21,4 +21,13 @@ app.use(express.json(), express.urlencoded({ extended: true }));
 const AllMyUserRoutes = require("./server/routes/user.routes");
 AllMyUserRoutes(app);
 
-app.listen(8000, () => console.log("The server is all fired up on port 8000"));
+const server=app.listen(8000, () => console.log("The server is all fired up on port 8000"));
+const io = require('socket.io')(server, { cors: true });
+io.on("connection",socket=>{
+    console.log("Nice to meet you. (shake hand)")
+   
+    socket.on("client",data=>{
+        io.emit("server",data)
+    })
+  
+})

@@ -110,10 +110,27 @@ UserSchema.statics.login = async function(email,password){
   }
   return user
 }
-
+const Sugschema = new mongoose.Schema ({
+  title:{
+      type: String,
+      required: true
+    },
+    user:[UserSchema],
+  suggested:{  type: String,
+    required: true}
+  // required: ["title"],
+  // properties: {
+  //   title: {type: "string", title: "Title", default: "A new task"},
+  //   done: {type: "boolean", title: "Done?", default: false}
+  // }
+},{timestamps: true});
 const Budget = mongoose.model("Budget", BudgetSchema);
 const User = mongoose.model("UserSchema", UserSchema);
+const Suggested = mongoose.model("Sugschema", Sugschema);
+////////////////////////////////////////////////
 
 
-module.exports = {Budget,User}
+
+
+module.exports = {Budget,User,Suggested}
 

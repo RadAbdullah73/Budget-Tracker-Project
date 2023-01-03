@@ -2,6 +2,8 @@
 const Model = require("../models/user.model");
 const UserSchema=Model.User
 const Budget=Model.Budget
+const Suggested=Model.Suggested
+
 var bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken");
 module.exports.createUser = (request, response) => {
@@ -141,6 +143,35 @@ module.exports.findAccordingMonth = (req, res) => {
         .then(one => res.json(one))
         .catch(err => res.json({ message: "Something went wrong", error: err }))};
      ;
+     module.exports.createNewSuggested = (req, res) => {
+        UserSchema.findOne({ _id: req.params.id })
+        .then(oneSingleAuthor => {var user1=oneSingleAuthor;
+            Suggested.create(req.body)
+            .then(newlyCreatedAuthor => {
+            Suggested.findOneAndUpdate({ _id:newlyCreatedAuthor._id}, {user:user1}, { new: true, runValidators: true })
+            .then(updatedAuthor => res.json({ updatedAuthor }))
+        })
+            .catch(err => res.status(400).json(err))
+        })
+       
+           
+    };
+    module.exports.deleteAnExistingSuggested = (req, res) => {
+        Suggested.deleteOne({ _id: req.params.id })
+            .then(result => res.json({ result: result }))
+            .catch(err => res.json({ message: "Something went wrong", error: err }));
+    };
+    module.exports.findAllSuggested = (req, res) => {
+        Suggested.find({}).sort({ _id: -1 })
+            .then(allDaAuthors =>{ 
+                res.json(allDaAuthors)
+             
+                
+            })
+            .catch(err => res.json({ message: "Something went wrong", error: err }));
+
+    };
+    
    
   
-;
+
