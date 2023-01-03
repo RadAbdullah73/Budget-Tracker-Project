@@ -112,7 +112,7 @@ module.exports.createNewAuthor = (req, res) => {
     UserSchema.findOne({ _id: req.params.id })
     .then(oneSingleAuthor => {var user1=oneSingleAuthor;
         Budget.create(req.body)
-        .then(newlyCreatedAuthor => {res.json({ newlyCreatedAuthor })
+        .then(newlyCreatedAuthor => {
         Budget.findOneAndUpdate({ _id:newlyCreatedAuthor._id}, {user:user1}, { new: true, runValidators: true })
         .then(updatedAuthor => res.json({ updatedAuthor }))
     })

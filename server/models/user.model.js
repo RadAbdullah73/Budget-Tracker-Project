@@ -43,16 +43,13 @@ const UserSchema = new mongoose.Schema({
   }, {timestamps: true});
 
 const BudgetSchema = new mongoose.Schema({
-
-	expenses:{food:{type:Number,default:0},residence:{type:Number,default:0},transport:{type:Number,default:0},clothes:{type:Number,default:0},health:{type:Number,default:0},entertainment:{type:Number,default:0},other:{type:Number,default:0},maintenance: {type:Number,default:0},sum:{type:Number,default:0} },
+	expenses:{food:{type:Number,default:0},residence:{type:Number,default:0},transport:{type:Number,default:0},clothes:{type:Number,default:0},health:{type:Number,default:0},entertainment:{type:Number,default:0},other:{type:Number,default:0},maintenance: {type:Number,default:0}},
 	dailyIncome:Number,
-	
 	debts:Number,
 	user:[UserSchema],
 	set1: {type:String,default:()=> formatDate()}
 	,
-	sum:Number
-
+	sum:{type:Number , default:0}
 	
 },{timestamps: true});
 UserSchema.virtual('confirmPassword')

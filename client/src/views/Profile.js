@@ -37,9 +37,13 @@ const Profile = (props) => {
           .catch(err => console.error(err));
 
   },[]);
+  const homePage=()=>{
+    navigate("/home")
+}
 
     return (
         <div>
+          <button onClick={homePage}>Home Page </button>
             {loaded &&
             <>
             <p>UserName : {thisUser.firstName} {thisUser.lastName}</p>

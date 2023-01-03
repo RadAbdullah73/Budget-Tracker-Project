@@ -14,17 +14,30 @@ const List = (props) => {
     const [loaded,setLoaded]=useState("")
     const [month,setMonth]=useState("Jan")
     const [incomeTotalDaily,setIncomeTotalDaily]=useState(0)
-    
+    const[Totalexpenses , setTotalExpenses] = useState(0)
     var data = JSON.parse(sessionStorage.getItem('user'))
 
            
-
+  const navToSuggest=()=>{
+    navigate("/suggestion/" + data.user._id)
+  }
+  const navToProfile=()=>{
+    navigate("/profile/" + data.user._id )
+  }
+  const navToAdd=()=>{
+    navigate("/add")
+  }
+  const logOut=()=>{
+    sessionStorage.removeItem('user');
+    navigate("/")
+  }
     
    
     useEffect(()=>{
         axios.get('http://localhost:8000/api/Budget/month/'+month)
             .then(res=>{
-              res.data.filter(p=>p.user[0]._id==data.user._id).map((item,i)=>setIncomeTotalDaily(incomeTotalDaily+item.dailyIncome))
+              res.data.filter(p=>p.user[0]._id==data.user._id).map((item,i)=>{setIncomeTotalDaily(incomeTotalDaily+item.dailyIncome)
+              setTotalExpenses(Totalexpenses+ item.sum)})
                 setBudgets(res.data);
                 setLoaded(true);
                 console.log(data.user.salary)
@@ -32,14 +45,20 @@ const List = (props) => {
             })
             .catch(err => console.error(err));
       
-    },[]);
+    },[month]);
   //   const removeFromDom = personId => {
         
   //     setPlayers(players.filter(person => person._id != personId))
   // }
   return (
-    <div   >
-      
+    <div>
+      <button onClick={navToProfile}>Profile Page </button>
+      <button onClick={navToSuggest}>Add Suggestion for Market </button>
+      <br></br>
+      <button onClick={navToAdd}>Add Your Expenses For Today </button>
+      <br></br>
+      <button onClick={logOut}>LogOut</button>
+
       {loaded &&
       
       <>
@@ -62,7 +81,7 @@ const List = (props) => {
       {Budgets.filter(p=>p.user[0]._id==data.user._id).map((item,i)=>{
         //  setIncomeTotalDaily(incomeTotalDaily+item.dailyIncome)
         return <div  key={i} style={{border:"1px solid black",display:"flex",justifyContent:"space-evenly"}}>
-          <p>expenses:{item.expenses.sum}</p>
+          <p>expenses:{item.sum}</p>
           <p>dailyIncome{item.dailyIncome}</p>
           <p>Date:{item.set1.slice(0,10)}</p>
           <Link to={"/Budget/"+item._id}><button>detail</button></Link>
