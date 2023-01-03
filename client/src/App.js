@@ -12,6 +12,7 @@ import LoginForm from './component/LoginForm'
 import Adding from './views/Adding';
 import Profile from './views/Profile';
 import Suggested from './views/Suggested';
+import Home from './component/Home';
 
 
 
@@ -24,15 +25,15 @@ function App() {
       
       
       <Router>
-
-         <RegisterForm path="/"/>
+        <Home path="/" />
+         <RegisterForm path="/reg"/>
         <LoginForm path="/login"/>
         <Adding path="/add"/>
         <Profile path="/profile/:id"/>
         <List path="/home"/>
         <Result path="/Budget/:id"/>
         <Suggested path="/suggestion/:id"/>
-        
+
       </Router>
     </div>
   );
