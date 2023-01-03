@@ -769,6 +769,7 @@ pre code {
   min-height: 1px;
   padding-right: 15px;
   padding-left: 15px;
+ 
 }
 .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12 {
   float: left;
@@ -1695,7 +1696,7 @@ output {
   padding: 6px 12px;
   font-size: 14px;
   line-height: 1.42857143;
-  color: #555;
+  color:white;
   background-color: #fff;
   background-image: none;
   border: 1px solid #ccc;
@@ -1716,10 +1717,10 @@ output {
   opacity: 1;
 }
 .form-control:-ms-input-placeholder {
-  color: #999;
+  color: white;
 }
 .form-control::-webkit-input-placeholder {
-  color: #999;
+  color: white;
 }
 .form-control[disabled],
 .form-control[readonly],
