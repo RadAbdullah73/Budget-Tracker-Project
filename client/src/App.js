@@ -29,6 +29,7 @@ function App() {
         <Adding path="/add"/>
         <Profile path="/profile/:id"/>
         <List path="/home"/>
+        <Result path="/Budget/:id"/>
 
 
        
