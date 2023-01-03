@@ -4,15 +4,15 @@ import { Link } from '@reach/router';
 
 
 const Result = (props) => {
-    const [competition, setCompetition]=useState("")
+    const [Budget, setBudget]=useState("")
     const [loaded,setLoaded]=useState(false)
     
 
     useEffect(() => {
-        axios.get('http://localhost:8000/api/competitions/' + props.id)
+        axios.get('http://localhost:8000/api/Budget/' + props.id)
 
             .then(res => {
-                setCompetition(res.data);
+                setBudget(res.data);
                 setLoaded(true)
                
                 // console.log(res.data)
@@ -23,32 +23,20 @@ const Result = (props) => {
     }, []);
   return (
     <div>
-        <button style={{backgroundColor:"blue"}}><Link to="/">back to home </Link></button>
+      
         {loaded &&
       <>
-      <h1>{competition.question}</h1>
-      <div style={{display:"flex",margin:"0 auto",width:"40vw"}}>
-        <div >
-          <h2>
-            {competition.coun1.name}
-            </h2>  
-            {competition.coun1.votes}
-        </div>
-        <div style={{marginLeft:"60px"}}>
-          <h2>
-            {competition.coun2.name}
-            </h2>  
-            {competition.coun2.votes}
-        </div>
-        { competition.coun3.name !=" " ?
-        <div style={{marginLeft:"60px"}}>
-          <h2>
-            {competition.coun3.name}
-            </h2>  
-            {competition.coun3.votes}
-        </div>:""}
-
-      </div>
+       <h1>expenses</h1>
+      <p>food:{Budget.expenses.food}</p>
+      <p>residence:{Budget.expenses.residence}</p>
+      <p>transport:{Budget.expenses.transport}</p>
+      <p>clothes:{Budget.expenses.clothes}</p>
+      <p>health:{Budget.expenses.health}</p>
+      <p>entertainment:{Budget.expenses.entertainment}</p>
+      <p>total expenses:{Budget.sum}</p>
+      <h2>daily income:{Budget.dailyIncome}</h2>
+      
+   
       </>}
     </div>
   )
