@@ -33,19 +33,28 @@ const List = (props) => {
   }
     
    
-    useEffect(()=>{
-        axios.get('http://localhost:8000/api/Budget/month/'+month)
-            .then(res=>{
-              res.data.filter(p=>p.user[0]._id==data.user._id).map((item,i)=>{setIncomeTotalDaily(incomeTotalDaily+item.dailyIncome)
-              setTotalExpenses(Totalexpenses+ item.sum)})
-                setBudgets(res.data);
-                setLoaded(true);
-                console.log(data.user.salary)
-                
-            })
-            .catch(err => console.error(err));
-      
-    },[month]);
+  useEffect(()=>{
+    axios.get('http://localhost:8000/api/Budget/month/'+month)
+    .then(res=>{
+      var totalEx=0
+      var totalIn=0
+      res.data.filter(p=>p.user[0]._id==data.user._id).map((item,i)=>{
+
+        // setIncomeTotalDaily(parseInt(incomeTotalDaily)+parseInt(item.dailyIncome))
+        totalEx+=item.sum
+      // setTotalExpenses(Totalexpenses+ item.sum)}
+      totalIn+=item.dailyIncome}
+      )
+      setIncomeTotalDaily(totalIn)
+      setTotalExpenses(totalEx)
+        setBudgets(res.data);
+        setLoaded(true);
+        console.log(data.user.salary)
+
+    })
+    .catch(err => console.error(err));
+
+},[month]);
   //   const removeFromDom = personId => {
         
   //     setPlayers(players.filter(person => person._id != personId))

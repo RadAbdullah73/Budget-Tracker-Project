@@ -48,7 +48,7 @@ const Result = (props) => {
               for (const key of Object.keys(errorResponse)) { // Loop through all errors and get the messages
                   errorArr.push(errorResponse[key].message)
               }
-              // Set Errors
+              
               setErrors(errorArr);
               console.log(errorArr);
           })
