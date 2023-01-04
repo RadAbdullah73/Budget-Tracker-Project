@@ -102,7 +102,7 @@ const handleSubmit = async (e) =>{
                     </div>
                 </div>
             </div>
-            <section id="our-sec" style={{height : "380px" , paddingTop:'0px'}}>
+            <section id="our-sec" style={{height : "380px" , paddingTop:'0px' , backgroundColor: '#E3F0F3'}}>
                 <div className="container">
                     <div className="row text-center">
                         <div className="col-md-8 col-md-offset-2">

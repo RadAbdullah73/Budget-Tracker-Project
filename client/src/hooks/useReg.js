@@ -21,8 +21,9 @@ const useReg = () => {
             setError(json.error)
         }
         if(response.ok){
-            localStorage.setItem('user',JSON.stringify(json))
-            navigate("/login")
+            sessionStorage.setItem('user',JSON.stringify(json))
+            var data = JSON.parse(sessionStorage.getItem('user'))
+            navigate("/home")
 
         }
     }
