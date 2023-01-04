@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Link } from '@reach/router';
 import Create from '../component/Create';
 import { navigate } from '@reach/router';
+import {TextField } from '@material-ui/core';
+import Grid from "@mui/material/Grid";
+
 
 
 const Result = (props) => {
@@ -60,36 +63,69 @@ const Result = (props) => {
       
         {loaded &&
       <>
-       <h1>expenses for : {Budget.set1.slice(0,10)}</h1>
-       <h2>daily income:{Budget.dailyIncome}</h2>
-      <p>food:{Budget.expenses.food}</p>
-      <p>residence:{Budget.expenses.residence}</p>
-      <p>transport:{Budget.expenses.transport}</p>
-      <p>clothes:{Budget.expenses.clothes}</p>
-      <p>health:{Budget.expenses.health}</p>
-      <p>entertainment:{Budget.expenses.entertainment}</p>
-      <p>Maintenance : {Budget.expenses.maintenance}</p>
-      <p>Other Expenses : {Budget.expenses.other}</p>
-      <p>total expenses:{Budget.sum}</p>
+       <h2 className='rooo' style={{marginTop:'10px'}} >Expenses for : {Budget.set1.slice(0,10)}</h2>
+
+
+       <table className="table table-striped">
+            <thead>
+        <tr className="bg-info">
+        <th style={{textAlign:'center'}}>Daily Income</th>
+        <th style={{textAlign:'center'}}>food</th>
+        <th style={{textAlign:'center'}}>residence</th>
+        <th style={{textAlign:'center'}}>transport</th>
+        <th style={{textAlign:'center'}}>clothes</th>
+        <th style={{textAlign:'center'}}>health</th>
+        <th style={{textAlign:'center'}}>entertainment</th>
+        <th style={{textAlign:'center'}}>Maintenance</th>
+        <th style={{textAlign:'center'}}>Other Expenses</th>
+        <th style={{textAlign:'center'}}>total expenses</th>
+        </tr>
+        </thead>
+
+       <tr className="bg-light">
+       <td style={{textAlign:'center'}}>{Budget.dailyIncome}</td>
+       <td style={{textAlign:'center'}}>{Budget.expenses.residence}</td>
+       <td style={{textAlign:'center'}}>{Budget.expenses.food} </td>
+       <td style={{textAlign:'center'}}>{Budget.expenses.transport}</td>
+       <td style={{textAlign:'center'}}>{Budget.expenses.clothes} </td>
+       <td style={{textAlign:'center'}}>{Budget.expenses.health}</td>
+       <td style={{textAlign:'center'}}>{Budget.expenses.entertainment}</td>
+       <td style={{textAlign:'center'}}>{Budget.expenses.maintenance}</td>
+       <td style={{textAlign:'center'}}>{Budget.expenses.other} </td>
+       <td style={{textAlign:'center'}}>{Budget.sum}</td>
+
+       </tr>
+</table>
+
+
       
       {errors.map((err, index) => <p key={index}>{err}</p>)}
      
       <div>
       <div>
-            <h3>Daily Income:</h3>
-            <input type="number" onChange={(e)=>setDailyIncome(e.target.value)}></input>
+          <br></br>
+          <h3 className='headingDaily'>Daily Income</h3>
+          <TextField style={{ marginLeft: '520px' }} inputProps={{ style: { fontSize: 25 } }}  helperText="DailyIncome" type="text" value={dailyIncome} onChange={(e) => setDailyIncome(e.target.value)} />
         </div>
-                 <p>Food : <input type="number"  onChange={(e)=>setFood(e.target.value)}></input></p>
-                 <p>Residence : <input type="number" onChange={(e)=>setResidence(e.target.value)}></input></p>
-                 <p>Transport : <input type="number"  onChange={(e)=>setTransport(e.target.value)}></input></p>
-                 <p>Clothes : <input type="number"  onChange={(e)=>setClothes(e.target.value)}></input></p>
-                 <p>Health : <input type="number"  onChange={(e)=>setHealth(e.target.value)}></input></p>
-                 <p> Entertainment : <input type="number"  onChange={(e)=>setEntertainment(e.target.value)}></input></p>
-                 <p> Maintenance :<input type="number"  onChange={(e)=>setMaintenance(e.target.value)}></input></p>
-                 <p> Others : <input type="number"  onChange={(e)=>setOther(e.target.value)}></input></p>
+        <div style={{ margin: "0 0 0 40%", width: "20%", display: "flex" }}>
+            <Grid>
+              <TextField inputProps={{ style: { fontSize: 25 } }}  helperText="Food" type="text" value={food} onChange={(e) => setFood(e.target.value)} />
+              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Residence" type="text" value={residence} onChange={(e) => setResidence(e.target.value)} />
+              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Transport" type="text" value={transport} onChange={(e) => setTransport(e.target.value)} />
+              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Clothes" type="text" value={clothes} onChange={(e) => setClothes(e.target.value)} />
+            </Grid>
+            <div style={{ width: "40%" }}>
+            </div>
+            <div>
+              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Health" type="text" value={health} onChange={(e) => setHealth(e.target.value)} />
+              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Entertainment" type="text" value={entertainment} onChange={(e) => setEntertainment(e.target.value)} />
+              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Maintenance" type="text" value={maintenance} onChange={(e) => setMaintenance(e.target.value)} />
+              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Others" type="text" value={other} onChange={(e) => setOther(e.target.value)} />
+            </div>
+          </div>
                 
              </div>  
-             <button style={{backgroundColor:"blue"}} onClick={updateBudget}>Add </button>
+             <button className='BtnAdd' onClick={updateBudget}>Add To your Current Expenses </button>
             
       
    

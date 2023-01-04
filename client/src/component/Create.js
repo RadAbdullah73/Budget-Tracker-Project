@@ -75,8 +75,6 @@ const Create = (props) => {
             </div>
       <h1 className='headerAddingPage'>Add your Finance for Today </h1>
      
-      
-        
       <form onSubmit={handleSubmet}>
         <div>
           <br></br>
