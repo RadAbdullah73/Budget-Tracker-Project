@@ -8,7 +8,7 @@ import "./assets/css/styleReg.css"
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
 import Grid from "@mui/material/Grid";
-import CssBaseline from "@mui/material/CssBaseline";
+import Box from '@mui/material/Box';
 
 
 const Create = (props) => {
@@ -73,37 +73,42 @@ const Create = (props) => {
                 <div class="shape1"></div>
                 <div class="shape1"></div>
             </div>
-      <h1 className='headerAddingPage'>Add your Finance for Today </h1>
+
+      <h2 className='rooo' style={{marginTop:'10px'}} >Add your Finance for Today</h2>
+
      
       <form onSubmit={handleSubmet}>
+      <Box m={1}>
         <div>
+  
           <br></br>
           <h3 className='headingDaily'>Daily Income</h3>
-          <TextField style={{ marginLeft: '520px' }} inputProps={{ style: { fontSize: 25 } }}  helperText="DailyIncome" type="text" value={dailyIncome} onChange={(e) => setDailyIncome(e.target.value)} />
+         
+          <TextField variant="standard" color="success" focused style={{ marginLeft: '520px' }} inputProps={{ style: { fontSize: 25 } }}  helperText="DailyIncome" type="text" value={dailyIncome} onChange={(e) => setDailyIncome(e.target.value)} />
         </div>
         <div>
           <br></br>
           <h3 className='headingCreate'>Add your expenses for today</h3>
           <div style={{ margin: "0 0 0 40%", width: "20%", display: "flex" }}>
             <Grid>
-              <TextField inputProps={{ style: { fontSize: 25 } }}  helperText="Food" type="text" value={food} onChange={(e) => setFood(e.target.value)} />
-              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Residence" type="text" value={residence} onChange={(e) => setResidence(e.target.value)} />
-              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Transport" type="text" value={transport} onChange={(e) => setTransport(e.target.value)} />
-              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Clothes" type="text" value={clothes} onChange={(e) => setClothes(e.target.value)} />
+              <TextField variant="standard" color="success" focused inputProps={{ style: { fontSize: 25 , color:'white' } }}  helperText="Food" type="text" value={food} onChange={(e) => setFood(e.target.value)} />
+              <TextField variant="standard" color="success" focused  inputProps={{ style: { fontSize: 25 , color:'white' } }} helperText="Residence" type="text" value={residence} onChange={(e) => setResidence(e.target.value)} />
+              <TextField variant="standard" color="success" focused inputProps={{ style: { fontSize: 25 , color:'white' } }} helperText="Transport" type="text" value={transport} onChange={(e) => setTransport(e.target.value)} />
+              <TextField variant="standard" color="success" focused inputProps={{ style: { fontSize: 25 , color:'white' } }} helperText="Clothes" type="text" value={clothes} onChange={(e) => setClothes(e.target.value)} />
             </Grid>
             <div style={{ width: "40%" }}>
             </div>
             <div>
-              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Health" type="text" value={health} onChange={(e) => setHealth(e.target.value)} />
-              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Entertainment" type="text" value={entertainment} onChange={(e) => setEntertainment(e.target.value)} />
-              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Maintenance" type="text" value={maintenance} onChange={(e) => setMaintenance(e.target.value)} />
-              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Others" type="text" value={other} onChange={(e) => setOther(e.target.value)} />
+              <TextField variant="standard" color="success" focused  inputProps={{ style: { fontSize: 25 , color:'white' } }} helperText="Health" type="text" value={health} onChange={(e) => setHealth(e.target.value)} />
+              <TextField variant="standard" color="success" focused inputProps={{ style: { fontSize: 25 , color:'white' } }} helperText="Entertainment" type="text" value={entertainment} onChange={(e) => setEntertainment(e.target.value)} />
+              <TextField variant="standard" color="success" focused inputProps={{ style: { fontSize: 25  , color:'white'} }} helperText="Maintenance" type="text" value={maintenance} onChange={(e) => setMaintenance(e.target.value)} />
+              <TextField variant="standard" color="success" focused inputProps={{ style: { fontSize: 25 , color:'white' } }} helperText="Others" type="text" value={other} onChange={(e) => setOther(e.target.value)} />
             </div>
           </div>
 
         </div>
         <button className='BtnAdd'>Add </button>
-
+        </Box>
       </form>
       {props.children}
     </div>

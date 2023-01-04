@@ -59,17 +59,17 @@ const Result = (props) => {
 
   }
   return (
-    <div>
+    <div className='AddingPage'>
       
         {loaded &&
       <>
        <h2 className='rooo' style={{marginTop:'10px'}} >Expenses for : {Budget.set1.slice(0,10)}</h2>
 
 
-       <table className="table table-striped">
+       <table className="table table-striped" border={3}>
             <thead>
         <tr className="bg-info">
-        <th style={{textAlign:'center'}}>Daily Income</th>
+        <th style={{textAlign:'center' , color:'green'}}>Daily Income</th>
         <th style={{textAlign:'center'}}>food</th>
         <th style={{textAlign:'center'}}>residence</th>
         <th style={{textAlign:'center'}}>transport</th>
@@ -78,12 +78,12 @@ const Result = (props) => {
         <th style={{textAlign:'center'}}>entertainment</th>
         <th style={{textAlign:'center'}}>Maintenance</th>
         <th style={{textAlign:'center'}}>Other Expenses</th>
-        <th style={{textAlign:'center'}}>total expenses</th>
+        <th style={{textAlign:'center' ,  color:'red'}}>total expenses</th>
         </tr>
         </thead>
 
-       <tr className="bg-light">
-       <td style={{textAlign:'center'}}>{Budget.dailyIncome}</td>
+       <tr className="bg-danger">
+       <td style={{textAlign:'center' , color:'green'}}>{Budget.dailyIncome}</td>
        <td style={{textAlign:'center'}}>{Budget.expenses.residence}</td>
        <td style={{textAlign:'center'}}>{Budget.expenses.food} </td>
        <td style={{textAlign:'center'}}>{Budget.expenses.transport}</td>
@@ -92,7 +92,7 @@ const Result = (props) => {
        <td style={{textAlign:'center'}}>{Budget.expenses.entertainment}</td>
        <td style={{textAlign:'center'}}>{Budget.expenses.maintenance}</td>
        <td style={{textAlign:'center'}}>{Budget.expenses.other} </td>
-       <td style={{textAlign:'center'}}>{Budget.sum}</td>
+       <td style={{textAlign:'center' ,  color:'red'}}>{Budget.sum}</td>
 
        </tr>
 </table>
@@ -105,22 +105,22 @@ const Result = (props) => {
       <div>
           <br></br>
           <h3 className='headingDaily'>Daily Income</h3>
-          <TextField style={{ marginLeft: '520px' }} inputProps={{ style: { fontSize: 25 } }}  helperText="DailyIncome" type="text" value={dailyIncome} onChange={(e) => setDailyIncome(e.target.value)} />
+          <TextField variant="standard" color="success" focused style={{ marginLeft: '520px' }} inputProps={{ style: { fontSize: 25 , color:'white' } }}  helperText="DailyIncome" type="text" value={dailyIncome} onChange={(e) => setDailyIncome(e.target.value)} />
         </div>
         <div style={{ margin: "0 0 0 40%", width: "20%", display: "flex" }}>
             <Grid>
-              <TextField inputProps={{ style: { fontSize: 25 } }}  helperText="Food" type="text" value={food} onChange={(e) => setFood(e.target.value)} />
-              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Residence" type="text" value={residence} onChange={(e) => setResidence(e.target.value)} />
-              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Transport" type="text" value={transport} onChange={(e) => setTransport(e.target.value)} />
-              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Clothes" type="text" value={clothes} onChange={(e) => setClothes(e.target.value)} />
+              <TextField variant="standard" color="success" focused inputProps={{ style: { fontSize: 25 , color:'white' } }}  helperText="Food" type="text" value={food} onChange={(e) => setFood(e.target.value)} />
+              <TextField variant="standard" color="success" focused inputProps={{ style: { fontSize: 25 , color:'white'} }} helperText="Residence" type="text" value={residence} onChange={(e) => setResidence(e.target.value)} />
+              <TextField variant="standard" color="success" focused inputProps={{ style: { fontSize: 25, color:'white' } }} helperText="Transport" type="text" value={transport} onChange={(e) => setTransport(e.target.value)} />
+              <TextField variant="standard" color="success" focused inputProps={{ style: { fontSize: 25 , color:'white'} }} helperText="Clothes" type="text" value={clothes} onChange={(e) => setClothes(e.target.value)} />
             </Grid>
             <div style={{ width: "40%" }}>
             </div>
             <div>
-              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Health" type="text" value={health} onChange={(e) => setHealth(e.target.value)} />
-              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Entertainment" type="text" value={entertainment} onChange={(e) => setEntertainment(e.target.value)} />
-              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Maintenance" type="text" value={maintenance} onChange={(e) => setMaintenance(e.target.value)} />
-              <TextField inputProps={{ style: { fontSize: 25 } }} helperText="Others" type="text" value={other} onChange={(e) => setOther(e.target.value)} />
+              <TextField variant="standard" color="success" focused inputProps={{ style: { fontSize: 25 , color:'white'} }} helperText="Health" type="text" value={health} onChange={(e) => setHealth(e.target.value)} />
+              <TextField variant="standard" color="success" focused inputProps={{ style: { fontSize: 25, color:'white' } }} helperText="Entertainment" type="text" value={entertainment} onChange={(e) => setEntertainment(e.target.value)} />
+              <TextField variant="standard" color="success" focused inputProps={{ style: { fontSize: 25, color:'white' } }} helperText="Maintenance" type="text" value={maintenance} onChange={(e) => setMaintenance(e.target.value)} />
+              <TextField variant="standard" color="success" focused inputProps={{ style: { fontSize: 25 , color:'white'} }} helperText="Others" type="text" value={other} onChange={(e) => setOther(e.target.value)} />
             </div>
           </div>
                 
