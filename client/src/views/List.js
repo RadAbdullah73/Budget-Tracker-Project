@@ -17,7 +17,7 @@ import { InputLabel, TablePagination } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import '../App.css';
-
+import Stack from '@mui/material/Stack';
 
 const List = () => {
   const [backgroundColor1, setBackgroundColor1] = useState('');
@@ -135,14 +135,45 @@ const List = () => {
   });
   return (
     <div className="App1" >
+<header>
+                <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation" style={{paddingTop:'10px' }}>
+                    <div className="container">
+                        <div className="navbar-header">
+                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                <span className="sr-only">Toggle navigation</span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                            </button>
+                            <img src={require("../component/assets/img/Budget_Tracker_1.png")} alt="" style={{height: '10%',width: '30%'}}/>
+                        </div>
 
-      <ButtonGroup spacing={2} variant="contained" direction="row" aria-label="outlined primary button group">
-        <Button onClick={navToProfile}>Profile Page</Button>
-        <Button onClick={navToSuggest}>Add Suggestion for Market</Button>
-        <Button onClick={navToAdd}>Add Your Expenses For Today</Button>
-        <Button onClick={logOut} style={{ backgroundColor: "red" }}>LogOut</Button>
-        <Button onClick={() => { theme == "light" ? setTheme("dark") : setTheme("light") }} style={{ backgroundColor: "green" }}>Theme</Button>
-      </ButtonGroup>
+                        <div className="collapse navbar-collapse navbar-ex1-collapse">
+                            <ul className="nav navbar-nav navbar-right">
+                            <Stack spacing={2} direction="row">
+                            <li>
+                            
+                                    <a href="#"><Button variant="contained" color="success" onClick={navToProfile}>Profile </Button></a>
+                                </li>
+                                <li><a href="#"><Button variant="contained" color="success" onClick={navToSuggest}> Suggestion </Button></a>
+                                </li>
+                                <li>
+                                    <a href="#"><Button variant="contained" color="success" onClick={navToAdd}>Add Your Expenses </Button></a>
+                                </li>
+                                <li><a href="#"><Button variant="contained" color="success" onClick={logOut} style={{ backgroundColor: "red" }}>LogOut</Button></a>
+                                </li>
+                                <li>
+                                    <a href="#"><Button variant="contained" color="success" onClick={() => { theme == "light" ? setTheme("dark") : setTheme("light") }} style={{ backgroundColor: "green" }}>Theme</Button></a>
+                                </li>
+                                </Stack>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </nav>
+            </header>
+      
 
       {loaded &&
 
@@ -151,45 +182,45 @@ const List = () => {
           <InputLabel>salary:{data.user.salary}</InputLabel>
           <br />
 
-          <InputLabel>total income for this month:{data.user.salary + incomeTotalDaily}</InputLabel>
+          <InputLabel style={{color:'white',fontSize:'20px'}}>total income for this month:{data.user.salary + incomeTotalDaily}</InputLabel>
           <br />
 
           <ButtonGroup variant="text" aria-label="text button group" >
-            <Button onClick={() => handleClick(1)} style={{ backgroundColor: backgroundColor1 }}>Jan</Button>
-            <Button onClick={() => handleClick(2)} style={{ backgroundColor: backgroundColor2 }}>Feb</Button>
-            <Button onClick={() => handleClick(3)} style={{ backgroundColor: backgroundColor3 }}>Mar</Button>
-            <Button onClick={() => handleClick(4)} style={{ backgroundColor: backgroundColor4 }}>Apr</Button>
-            <Button onClick={() => handleClick(5)} style={{ backgroundColor: backgroundColor5 }}>May</Button>
-            <Button onClick={() => handleClick(6)} style={{ backgroundColor: backgroundColor6 }}>Jun</Button>
-            <Button onClick={() => handleClick(7)} style={{ backgroundColor: backgroundColor7 }}>Jul</Button>
-            <Button onClick={() => handleClick(8)} style={{ backgroundColor: backgroundColor8 }}>Aug</Button>
-            <Button onClick={() => handleClick(9)} style={{ backgroundColor: backgroundColor9 }}>Sep</Button>
-            <Button onClick={() => handleClick(10)} style={{ backgroundColor: backgroundColor10 }}>Oct</Button>
-            <Button onClick={() => handleClick(11)} style={{ backgroundColor: backgroundColor11 }}>Nov</Button>
-            <Button onClick={() => handleClick(12)} style={{ backgroundColor: backgroundColor12 }}>Dec</Button>
+            <Button onClick={() => handleClick(1)} style={{ backgroundColor: backgroundColor1 ,color:'white' }}>Jan</Button>
+            <Button onClick={() => handleClick(2)} style={{ backgroundColor: backgroundColor2 ,color:'white' }}>Feb</Button>
+            <Button onClick={() => handleClick(3)} style={{ backgroundColor: backgroundColor3 ,color:'white' }}>Mar</Button>
+            <Button onClick={() => handleClick(4)} style={{ backgroundColor: backgroundColor4 ,color:'white' }}>Apr</Button>
+            <Button onClick={() => handleClick(5)} style={{ backgroundColor: backgroundColor5 ,color:'white' }}>May</Button>
+            <Button onClick={() => handleClick(6)} style={{ backgroundColor: backgroundColor6 ,color:'white' }}>Jun</Button>
+            <Button onClick={() => handleClick(7)} style={{ backgroundColor: backgroundColor7 ,color:'white' }}>Jul</Button>
+            <Button onClick={() => handleClick(8)} style={{ backgroundColor: backgroundColor8 ,color:'white' }}>Aug</Button>
+            <Button onClick={() => handleClick(9)} style={{ backgroundColor: backgroundColor9 ,color:'white' }}>Sep</Button>
+            <Button onClick={() => handleClick(10)} style={{ backgroundColor: backgroundColor10 ,color:'white' }}>Oct</Button>
+            <Button onClick={() => handleClick(11)} style={{ backgroundColor: backgroundColor11 ,color:'white'   }}>Nov</Button>
+            <Button onClick={() => handleClick(12)} style={{ backgroundColor: backgroundColor12  ,color:'white' }}>Dec</Button>
           </ButtonGroup>
           <div style={{ width: "80%", margin: "0 auto" }}>
             <ThemeProvider variant="contained" backgroundColor="black" theme={darkTheme}>
               <CssBaseline />
 
               <Paper sx={{ width: '100%', overflow: 'hidden' }} >
-                <TableContainer component={Paper}>
+                <TableContainer component={Paper} style={{border:'1px solid black' }}>
                   <Table sx={{ minWidth: 700 }} aria-label="customized">
                     <TableHead>
                       <TableRow>
-                        <StyledTableCell align="center">Expenses</StyledTableCell>
-                        <StyledTableCell align="center">DailyIncome</StyledTableCell>
-                        <StyledTableCell align="center">Date</StyledTableCell>
-                        <StyledTableCell align="center">Action</StyledTableCell>
+                        <StyledTableCell style={{fontSize:'20px'}} align="center">Expenses</StyledTableCell>
+                        <StyledTableCell style={{fontSize:'20px'}} align="center">DailyIncome</StyledTableCell>
+                        <StyledTableCell  style={{fontSize:'20px'}} align="center">Date</StyledTableCell>
+                        <StyledTableCell style={{fontSize:'20px'}} align="center">Action</StyledTableCell>
                       </TableRow>
                     </TableHead>
                     <TableBody>
                       {Budgets.filter(p => p.user[0]._id == data.user._id).slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((item, i) => (
                         <TableRow key={i}>
-                          <StyledTableCell align="center">{item.sum}</StyledTableCell>
-                          <StyledTableCell align="center">{item.dailyIncome}</StyledTableCell>
-                          <StyledTableCell align="center">{item.set1.slice(0, 10)}</StyledTableCell>
-                          <StyledTableCell align="center"><Button variant="contained" color="success" onClick={() => detail(item._id)}>detail</Button></StyledTableCell>
+                          <StyledTableCell style={{fontSize:'20px'}} align="center">{item.sum}</StyledTableCell>
+                          <StyledTableCell style={{fontSize:'20px'}} align="center">{item.dailyIncome}</StyledTableCell>
+                          <StyledTableCell style={{fontSize:'20px'}} align="center">{item.set1.slice(0, 10)}</StyledTableCell>
+                          <StyledTableCell style={{fontSize:'20px'}} align="center"><Button variant="contained" color="success" style={{backgroundColor:'black'}} onClick={() => detail(item._id)}>detail</Button></StyledTableCell>
                         </TableRow>
                       ))}
                     </TableBody>

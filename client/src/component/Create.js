@@ -9,6 +9,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { grey } from "@mui/material/colors";
 import Grid from "@mui/material/Grid";
 import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 
 
 const Create = (props) => {
@@ -65,9 +66,45 @@ const Create = (props) => {
     navigate("/home/")
   }
 
-
+  const logOut = () => {
+    sessionStorage.removeItem('user');
+    navigate("/")
+  }
   return (
+<div>
+<header>
+                <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation" style={{paddingTop:'10px' }}>
+                    <div className="container">
+                        <div className="navbar-header">
+                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                <span className="sr-only">Toggle navigation</span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                            </button>
+                            <img src={require("../component/assets/img/Budget_Tracker_1.png")} alt="" style={{height: '10%',width: '30%'}}/>
+                        </div>
 
+                        <div className="collapse navbar-collapse navbar-ex1-collapse">
+                            <ul className="nav navbar-nav navbar-right">
+        
+
+                                <li><a href="/home">Home Page</a>
+                                </li>
+
+                                <li><a href="#contact-sec"><Button onClick={logOut} style={{ backgroundColor: "red" }}>LogOut</Button></a>
+                                </li>
+                                <li>
+                                    {/* <a href="#our-sec">Our Team</a> */}
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </nav>
+            </header>
     <div className='AddingPage'>
       <div class="background1">
                 <div class="shape1"></div>
@@ -84,7 +121,7 @@ const Create = (props) => {
           <br></br>
           <h3 className='headingDaily'>Daily Income</h3>
          
-          <TextField variant="standard" color="success" focused style={{ marginLeft: '520px' }} inputProps={{ style: { fontSize: 25 } }}  helperText="DailyIncome" type="text" value={dailyIncome} onChange={(e) => setDailyIncome(e.target.value)} />
+          <TextField variant="standard" color="success" focused style={{ marginLeft: '520px' }} inputProps={{ style: { fontSize: 25 , color:'white' } }}  helperText="DailyIncome" type="text" value={dailyIncome} onChange={(e) => setDailyIncome(e.target.value)} />
         </div>
         <div>
           <br></br>
@@ -107,10 +144,11 @@ const Create = (props) => {
           </div>
 
         </div>
-        <button className='BtnAdd'>Add </button>
+        <button className='BtnAdd' style={{backgroundColor:'#27c00a'}}>Add </button>
         </Box>
       </form>
       {props.children}
+    </div>
     </div>
   )
 }

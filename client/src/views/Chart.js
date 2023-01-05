@@ -78,7 +78,7 @@ const Chart = (props) => {
   data={[
     { title: 'Food', value: food, color: '#212F3D' },
     { title: 'Residence', value: residence, color: '#707B7C' },
-    { title: 'Transport', value: transport, color: '#ECF0F1' },
+    { title: 'Transport', value: transport, color: '#ff33cc' },
     { title: 'Clothes', value: clothes, color: '#D4AC0D' },
     { title: 'Health', value: health, color: '#229954' },
     { title: 'Entertainment', value: entertainment, color: '#2471A3' },
@@ -86,7 +86,7 @@ const Chart = (props) => {
     { title: 'Others', value: other, color: '#A93226' },
 
   ]}
-/>;
+/>
     </div>
     
     

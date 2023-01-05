@@ -82,7 +82,10 @@ const Profile = (props) => {
     navigate("/home")
 }
 
-
+const logOut = () => {
+  sessionStorage.removeItem('user');
+  navigate("/")
+}
 
 
     return (
@@ -108,10 +111,10 @@ const Profile = (props) => {
                                 <li><a href="/home">Home Page</a>
                                 </li>
 
-                                <li><a href="#contact-sec">Contact Us</a>
+                                <li><a href="#contact-sec"><Button onClick={logOut} style={{ backgroundColor: "red" }}>LogOut</Button></a>
                                 </li>
                                 <li>
-                                    <a href="#our-sec">Our Team</a>
+                                    {/* <a href="#our-sec">Our Team</a> */}
                                 </li>
 
                             </ul>
@@ -217,6 +220,7 @@ const Profile = (props) => {
     </Stack>
     </div>
     </div>
+    
         </div>
     )
 }

@@ -5,6 +5,7 @@ import Create from '../component/Create';
 import { navigate } from '@reach/router';
 import {TextField } from '@material-ui/core';
 import Grid from "@mui/material/Grid";
+import Button from '@mui/material/Button';
 
 
 
@@ -58,12 +59,51 @@ const Result = (props) => {
 
 
   }
+  const logOut = () => {
+    sessionStorage.removeItem('user');
+    navigate("/")
+  }
+  
   return (
     <div className='AddingPage'>
-      
+      {/* <Button onClick={logOut} style={{ backgroundColor: "red" , width:'10%' }}>LogOut</Button>
+      <a href="/home" style={{marginLeft:'10px'}}>Home Page</a> */}
+      <header>
+                <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation" style={{paddingTop:'10px' }}>
+                    <div className="container">
+                        <div className="navbar-header">
+                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                <span className="sr-only">Toggle navigation</span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                                <span className="icon-bar"></span>
+                            </button>
+                            <img src={require("../component/assets/img/Budget_Tracker_1.png")} alt="" style={{height: '10%',width: '30%'}}/>
+                        </div>
+
+                        <div className="collapse navbar-collapse navbar-ex1-collapse">
+                            <ul className="nav navbar-nav navbar-right">
+        
+
+                                <li><a href="/home">Home Page</a>
+                                </li>
+
+                                <li><a href="#contact-sec"><Button onClick={logOut} style={{ backgroundColor: "red" }}>LogOut</Button></a>
+                                </li>
+                                <li>
+                                    {/* <a href="#our-sec">Our Team</a> */}
+                                </li>
+
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </nav>
+            </header>
         {loaded &&
       <>
-       <h2 className='rooo' style={{marginTop:'10px'}} >Expenses for : {Budget.set1.slice(0,10)}</h2>
+       <h2 className='rooo' style={{marginTop:'75px'}} >Expenses for : {Budget.set1.slice(0,10)}</h2>
 
 
        <table className="table table-striped" border={3}>
@@ -125,7 +165,7 @@ const Result = (props) => {
           </div>
                 
              </div>  
-             <button className='BtnAdd' onClick={updateBudget}>Add To your Current Expenses </button>
+             <button className='BtnAdd' onClick={updateBudget} style={{backgroundColor:'#27c00a'}}>Add To your Current Expenses </button>
             
       
    
